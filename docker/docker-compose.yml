@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  # ==============================================================================
+  # PRIMARY RELATIONAL DATABASE: PostgreSQL 16
+  # ==============================================================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: crm-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-crm_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-crm_secure_password_123}
+      POSTGRES_DB: ${POSTGRES_DB:-crm_db}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - crm_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-crm_user} -d ${POSTGRES_DB:-crm_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - crm-internal-network
+
+  # ==============================================================================
+  # IN-MEMORY CACHE & JOB QUEUES: Redis 7
+  # ==============================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: crm-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - crm_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - crm-internal-network
+
+  # ==============================================================================
+  # S3-COMPATIBLE OBJECT STORAGE: MinIO
+  # ==============================================================================
+  minio:
+    image: minio/minio:latest
+    container_name: crm-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY:-crm_minio_admin}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_KEY:-crm_minio_secret_key_12345}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - crm_minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - crm-internal-network
+
+  # ==============================================================================
+  # LOCAL SMTP MAIL SANDBOX: MailHog
+  # ==============================================================================
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: crm-mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025" # SMTP port
+      - "8025:8025" # Web UI for viewing captured emails
+    networks:
+      - crm-internal-network
+
+volumes:
+  crm_postgres_data:
+    driver: local
+  crm_redis_data:
+    driver: local
+  crm_minio_data:
+    driver: local
+
+networks:
+  crm-internal-network:
+    driver: bridge
