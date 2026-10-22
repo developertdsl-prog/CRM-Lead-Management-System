@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Production-grade multi-tenant CRM and Lead Management System",
-  "author": "Antigravity Engineering",
+  "author": "Developer-TDSL",
   "license": "UNLICENSED",
   "scripts": {
     "build": "pnpm --filter @crm/* --filter crm-api --filter crm-web build",

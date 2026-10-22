@@ -24,6 +24,7 @@ export function Navbar() {
   const navLinks = [
     { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
     { name: 'Leads', href: '/leads', icon: Target, badge: 'Phase 2' },
+    { name: 'Companies', href: '/companies', icon: Building2, badge: 'Phase 3' },
     { name: 'Contacts', href: '/contacts', icon: Users, badge: 'Phase 3' },
     { name: 'Pipelines & Deals', href: '#', icon: Kanban, disabled: true },
     { name: 'Activities', href: '#', icon: CheckSquare, disabled: true },
