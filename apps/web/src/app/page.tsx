@@ -1,264 +1,227 @@
+import React from 'react';
 import Link from 'next/link';
 import {
-  ShieldCheck,
   Layers,
+  Target,
+  ShieldCheck,
+  TrendingUp,
+  Sparkles,
+  Zap,
+  ArrowRight,
   Database,
-  GitBranch,
-  Terminal,
-  Activity,
-  Kanban,
   Users,
   CheckCircle2,
-  ExternalLink,
-  ChevronRight,
-  TrendingUp,
+  FileSpreadsheet,
+  Lock,
+  Kanban,
+  BarChart3,
 } from 'lucide-react';
 
 export default function HomePage() {
-  const phases = [
-    { id: 'Phase 0', name: 'Architecture & Foundation', branch: 'feature/foundation-and-architecture', status: 'COMPLETE', active: false },
-    { id: 'Phase 1', name: 'Multi-Tenant Auth & RBAC', branch: '5-multi-tenant-authentication-jwt-rotation-rbac', status: 'COMPLETE', active: false },
-    { id: 'Phase 2', name: 'Lead Pipeline, Deduplication & CSV', branch: '8-lead-lifecycle-deduplication-engine-csv-importexport', status: 'COMPLETED & READY', active: true },
-    { id: 'Phase 3', name: 'Contacts, Companies & Custom Fields', branch: 'feature/contacts-companies-accounts', status: 'PLANNED', active: false },
-    { id: 'Phase 4', name: 'Sales Pipelines & Kanban Deals', branch: 'feature/sales-pipeline-kanban-deals', status: 'PLANNED', active: false },
-    { id: 'Phase 5', name: 'Activities, Tasks & Productivity', branch: 'feature/activities-tasks-productivity', status: 'PLANNED', active: false },
-    { id: 'Phase 6', name: 'Automation Workflows & BullMQ', branch: 'feature/automations-reports-analytics', status: 'PLANNED', active: false },
-  ];
-
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-slate-950 text-slate-100 selection:bg-indigo-500/30 font-sans">
       {/* Background glow effects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-[128px]" />
-        <div className="absolute top-1/3 -right-40 w-96 h-96 bg-blue-600/15 rounded-full blur-[128px]" />
-        <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-purple-600/15 rounded-full blur-[128px]" />
+        <div className="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-[140px]" />
+        <div className="absolute top-1/3 -right-40 w-96 h-96 bg-blue-600/15 rounded-full blur-[140px]" />
+        <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-purple-600/15 rounded-full blur-[140px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 py-12">
-        {/* Navigation Bar */}
-        <header className="flex items-center justify-between border-b border-slate-800/80 pb-6 mb-12">
+      {/* Navigation Header */}
+      <header className="relative z-20 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
               <Layers className="w-5 h-5 text-white" />
             </div>
             <div>
-              <span className="text-xl font-bold tracking-tight text-white block">
-                CRM & Lead Management
-              </span>
-              <span className="text-xs font-mono text-indigo-400">
-                Phase 2 • Lead Lifecycle, Deduplication & CSV Engine
+              <span className="text-lg font-bold tracking-tight text-white block">
+                ApexCRM
               </span>
             </div>
           </div>
 
           <div className="flex items-center space-x-4">
             <Link
-              href="/leads"
-              className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition-colors"
+              href="/login"
+              className="text-xs font-semibold text-slate-300 hover:text-white transition-colors"
             >
-              Open Leads App
+              Sign In
             </Link>
             <Link
-              href="/dashboard"
-              className="text-xs text-slate-300 hover:text-white transition-colors"
+              href="/register"
+              className="text-xs font-semibold px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/25 transition-all hover:scale-105"
             >
-              Dashboard
+              Get Started Free
             </Link>
-            <a
-              href="http://localhost:4000/api/docs"
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs text-slate-400 hover:text-white flex items-center gap-1 transition-colors"
-            >
-              Swagger Docs <ExternalLink className="w-3 h-3" />
-            </a>
           </div>
-        </header>
+        </div>
+      </header>
 
-        {/* Hero Section */}
-        <section className="mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono bg-slate-900 border border-slate-800 text-indigo-300 mb-6">
-            <GitBranch className="w-3.5 h-3.5 text-indigo-400" />
-            Active Branch: <span className="text-white font-semibold">8-lead-lifecycle-deduplication-engine-csv-importexport</span>
+      {/* Hero Section */}
+      <main className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-24">
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-indigo-950/80 border border-indigo-800/70 text-indigo-300 mb-6">
+            <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+            Next-Gen Enterprise Multi-Tenant CRM Engine
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-            Production-Grade Multi-Tenant <br />
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+            Close Deals Faster with{' '}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-blue-400 to-teal-300">
-              CRM & Lead Management System
+              Intelligent Lead Workflows
             </span>
           </h1>
 
-          <p className="text-lg text-slate-400 max-w-3xl leading-relaxed mb-8">
-            Engineered from scratch with strict tenant data isolation, ACID transactions, short-lived JWT access rotation, 
-            polymorphic activity tracking, automated lead qualification, and real-time revenue pipeline forecasting.
+          <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+            Eliminate duplicate records, automate pipeline transitions, and convert qualified leads into revenue-generating accounts with sub-millisecond precision.
           </p>
 
-          {/* Quick Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md">
-              <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-                <span>DATABASE ENTITIES</span>
-                <Database className="w-4 h-4 text-indigo-400" />
-              </div>
-              <div className="text-2xl font-bold text-white font-mono">24 Models</div>
-              <div className="text-xs text-slate-500 mt-1">Full Relational Schema</div>
-            </div>
-
-            <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md">
-              <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-                <span>SECURITY ARCHITECTURE</span>
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              </div>
-              <div className="text-2xl font-bold text-white font-mono">STRIDE Model</div>
-              <div className="text-xs text-slate-500 mt-1">Tenant Row-Level Isolation</div>
-            </div>
-
-            <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md">
-              <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-                <span>MONOREPO PACKAGES</span>
-                <Layers className="w-4 h-4 text-blue-400" />
-              </div>
-              <div className="text-2xl font-bold text-white font-mono">4 Workspaces</div>
-              <div className="text-xs text-slate-500 mt-1">api, web, db, shared-types</div>
-            </div>
-
-            <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md">
-              <div className="flex items-center justify-between text-slate-400 text-xs mb-2">
-                <span>PHASED ROADMAP</span>
-                <GitBranch className="w-4 h-4 text-purple-400" />
-              </div>
-              <div className="text-2xl font-bold text-white font-mono">9 Releases</div>
-              <div className="text-xs text-slate-500 mt-1">1:1 Git Branch Isolation</div>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/register"
+              className="w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-sm bg-indigo-600 hover:bg-indigo-500 text-white shadow-xl shadow-indigo-600/30 flex items-center justify-center gap-2 transition-all hover:scale-105"
+            >
+              Start Free Trial <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/login"
+              className="w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-sm bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 flex items-center justify-center gap-2 transition-colors"
+            >
+              Open Dashboard
+            </Link>
           </div>
-        </section>
+        </div>
 
-        {/* Phase Branching Status Pipeline */}
-        <section className="mb-16">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold text-white tracking-tight">Phased Implementation Progress</h2>
-              <p className="text-sm text-slate-400">Each phase is delivered with full code, tests, and its own dedicated Git branch.</p>
-            </div>
+        {/* Value Metrics Bar */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-20">
+          <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 text-center">
+            <div className="text-3xl font-extrabold text-white font-mono mb-1">100%</div>
+            <div className="text-xs text-slate-400 font-medium">Tenant Data Isolation</div>
           </div>
-
-          <div className="space-y-3">
-            {phases.map((phase, idx) => (
-              <div
-                key={phase.id}
-                className={`p-4 rounded-xl border flex items-center justify-between transition-all ${
-                  phase.active
-                    ? 'bg-indigo-950/40 border-indigo-500/40 shadow-lg shadow-indigo-950/50'
-                    : 'bg-slate-900/40 border-slate-800/60 opacity-80 hover:opacity-100'
-                }`}
-              >
-                <div className="flex items-center space-x-4">
-                  <div
-                    className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-mono font-bold ${
-                      phase.active
-                        ? 'bg-indigo-600 text-white'
-                        : 'bg-slate-800 text-slate-400'
-                    }`}
-                  >
-                    {idx}
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold text-white">{phase.name}</span>
-                      <code className="text-xs px-2 py-0.5 rounded bg-slate-800/80 text-indigo-300 font-mono">
-                        git branch: {phase.branch}
-                      </code>
-                    </div>
-                    <span className="text-xs text-slate-500 font-mono">{phase.id}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-3">
-                  {phase.active ? (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      COMPLETE
-                    </span>
-                  ) : idx === 1 ? (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                      NEXT PHASE
-                    </span>
-                  ) : (
-                    <span className="text-xs font-mono text-slate-500">{phase.status}</span>
-                  )}
-                </div>
-              </div>
-            ))}
+          <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 text-center">
+            <div className="text-3xl font-extrabold text-indigo-400 font-mono mb-1">&lt;10ms</div>
+            <div className="text-xs text-slate-400 font-medium">Real-time Duplicate Detection</div>
           </div>
-        </section>
+          <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 text-center">
+            <div className="text-3xl font-extrabold text-emerald-400 font-mono mb-1">ACID</div>
+            <div className="text-xs text-slate-400 font-medium">Atomic Deal Conversion</div>
+          </div>
+          <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 text-center">
+            <div className="text-3xl font-extrabold text-purple-400 font-mono mb-1">10k+</div>
+            <div className="text-xs text-slate-400 font-medium">Bulk CSV Records / Batch</div>
+          </div>
+        </div>
 
-        {/* Git Workflow Commands Card */}
-        <section className="mb-16">
-          <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800">
-            <div className="flex items-center space-x-2 text-indigo-400 font-mono text-xs mb-3">
-              <Terminal className="w-4 h-4" />
-              <span>DEVELOPER INSTRUCTIONS • PUSHING PHASE 0 TO BRANCH</span>
-            </div>
-            <h3 className="text-lg font-bold text-white mb-2">Pushing Phase 0 to Your Remote Repository</h3>
-            <p className="text-sm text-slate-400 mb-4">
-              To preserve your work in discrete reviewable stages, run these shell commands to commit and push Phase 0:
+        {/* Core Product Capabilities Grid */}
+        <div className="mb-20">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-3">
+              Engineered for High-Velocity Sales Teams
+            </h2>
+            <p className="text-sm text-slate-400">
+              Complete lead capture, automated duplicate prevention, and real-time revenue pipeline forecasting.
             </p>
+          </div>
 
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800/80 font-mono text-xs text-slate-300 space-y-2 overflow-x-auto">
-              <p className="text-slate-500"># 1. Switch to the Phase 0 branch</p>
-              <p className="text-emerald-400">git checkout -b phase-0-foundation</p>
-              <p className="text-slate-500"># 2. Stage all architectural and scaffolding files</p>
-              <p className="text-emerald-400">git add .</p>
-              <p className="text-slate-500"># 3. Commit Phase 0</p>
-              <p className="text-emerald-400">git commit -m &quot;feat(phase-0): system architecture, data model, threat model, monorepo scaffolding&quot;</p>
-              <p className="text-slate-500"># 4. Push to your Git remote</p>
-              <p className="text-emerald-400">git push -u origin phase-0-foundation</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Feature 1 */}
+            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Target className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">Automated Lead Lifecycle</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Seamless progression through New, Contacted, and Qualified stages with automated status transition tracking, user notes, and historical audit logs.
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">Smart Deduplication Engine</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Real-time pre-flight duplicate checks matching phone numbers and email domains with confidence scoring, preventing database clutter before submission.
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">Atomic Deal Conversion</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Single-transaction ACID conversion automatically creating or associating Companies, primary Contacts, and Sales Deals without orphan records.
+              </p>
+            </div>
+
+            {/* Feature 4 */}
+            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <FileSpreadsheet className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">Bulk CSV Import & Export</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Smart RFC 4180 CSV parser with automatic column aliases, custom duplicate strategies (Skip, Update, or Append), and fast one-click exports.
+              </p>
+            </div>
+
+            {/* Feature 5 */}
+            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Lock className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">Enterprise Multi-Tenancy</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Strict row-level tenancy enforcement across all 24 relational models, short-lived rotating JWT authentication, and role-based access control (RBAC).
+              </p>
+            </div>
+
+            {/* Feature 6 */}
+            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all group">
+              <div className="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <BarChart3 className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-white mb-2">Real-Time Funnel Analytics</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                SQL-aggregated conversion rates, active pipeline valuation, and stage velocity metrics ready out-of-the-box on your centralized dashboard.
+              </p>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Documentation Index */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-              <Database className="w-4 h-4 text-indigo-400" />
-              Relational Schema & Seeds
-            </h4>
-            <p className="text-xs text-slate-400 mb-4 leading-relaxed">
-              Prisma schema located in <code className="text-indigo-300">packages/database/prisma/schema.prisma</code> with composite multi-tenant indexes and ready-to-run seed data.
-            </p>
-            <span className="text-xs font-mono text-slate-500">See: docs/data-model.md</span>
+        {/* CTA Banner */}
+        <div className="p-10 rounded-3xl bg-gradient-to-r from-indigo-900/40 via-purple-900/30 to-slate-900 border border-indigo-500/30 text-center max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
+            Ready to Accelerate Your Sales Operations?
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto mb-6">
+            Sign up your organization in 30 seconds and start capturing, qualifying, and converting leads with confidence.
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <Link
+              href="/register"
+              className="px-6 py-2.5 rounded-xl font-semibold text-xs bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30"
+            >
+              Get Started Now
+            </Link>
+            <Link
+              href="/login"
+              className="px-6 py-2.5 rounded-xl font-semibold text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700"
+            >
+              Sign In
+            </Link>
           </div>
+        </div>
+      </main>
 
-          <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              STRIDE Threat Model
-            </h4>
-            <p className="text-xs text-slate-400 mb-4 leading-relaxed">
-              Complete threat analysis covering tenant isolation, zero-trust input validation, refresh token rotation, and rate-limiting.
-            </p>
-            <span className="text-xs font-mono text-slate-500">See: docs/threat-model.md</span>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-              <Layers className="w-4 h-4 text-blue-400" />
-              Architecture & API Spec
-            </h4>
-            <p className="text-xs text-slate-400 mb-4 leading-relaxed">
-              C4 architecture diagrams, RESTful standards, Swagger OpenAPI specs, and Docker Compose configurations.
-            </p>
-            <span className="text-xs font-mono text-slate-500">See: docs/architecture.md</span>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="mt-16 pt-8 border-t border-slate-900 text-center text-xs text-slate-600">
-          CRM & Lead Management System • Production Architecture • Built with Next.js, NestJS, Prisma & PostgreSQL
-        </footer>
-      </div>
+      {/* Footer */}
+      <footer className="border-t border-slate-900 py-8 text-center text-xs text-slate-500">
+        <p>&copy; {new Date().getFullYear()} ApexCRM Enterprise. All rights reserved.</p>
+      </footer>
     </div>
   );
 }

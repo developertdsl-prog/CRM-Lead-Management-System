@@ -39,40 +39,13 @@ A production-grade, multi-tenant CRM and Lead Management System built with **Nex
 
 ---
 
-## 🌿 Phased Roadmap & Git Branching
+## 🚀 Core Platform Modules
 
-Every phase is delivered as a discrete, functional release. You can commit and push each phase into its own Git branch:
-
-| Phase | Branch Name | Scope / Deliverable | Status |
-|---|---|---|---|
-| **Phase 0** | `phase-0-foundation` | Architecture, Data Model (Prisma), Monorepo Scaffolding, Docker, Threat Model | **COMPLETE** |
-| **Phase 1** | `phase-1-auth-tenancy` | Multi-tenant Auth, JWT Rotation, Roles/Permissions, Org Management, UI Auth Pages | Pending |
-| **Phase 2** | `phase-2-lead-management` | Lead CRUD, Status Pipeline, Conversion, Deduplication, CSV Import/Export, Timeline | Pending |
-| **Phase 3** | `phase-3-contacts-companies` | Contacts, Companies, Account 360 View, Custom Fields Engine, Interaction History | Pending |
-| **Phase 4** | `phase-4-pipelines-deals` | Kanban Pipeline, Drag & Drop Stages, Deal Forecasting, Won/Lost Workflows | Pending |
-| **Phase 5** | `phase-5-activities-productivity` | Tasks, Calls, Meetings, Rich Notes, Due Date Alerts, Calendar View, S3 Attachments | Pending |
-| **Phase 6** | `phase-6-automation-notifications` | BullMQ Event Automations, Auto-assignment, In-app Notifications, Email Alerts | Pending |
-| **Phase 7** | `phase-7-reports-analytics` | Conversion Funnel, Pipeline Velocity, Win/Loss Rate, Team Leaderboard, Exports | Pending |
-| **Phase 8** | `phase-8-devops-e2e-hardening` | Rate Limiting, Security Audit, Health Checks, CI/CD Actions, Playwright E2E | Pending |
-
-### Git Commands to Push Phase 0
-
-```bash
-# 1. Switch to Phase 0 branch
-git checkout -b phase-0-foundation
-
-# 2. Stage all files
-git add .
-
-# 3. Commit Phase 0
-git commit -m "feat(phase-0): requirements, architecture, data model, monorepo scaffolding, and threat model"
-
-# 4. Set your remote repository (if not already set)
-git remote add origin https://github.com/YOUR_USERNAME_OR_ORG/crm-lead-management-system.git
-
-# 5. Push to your branch
-git push -u origin phase-0-foundation
-```
+- **Authentication & RBAC**: Multi-tenant onboarding, argon2/bcrypt password hashing, rotating JWT access & refresh tokens, hierarchical role enforcement.
+- **Lead Lifecycle & Deduplication**: High-speed lead capture, email/phone duplicate prevention engine, RFC 4180 CSV bulk import/export, and atomic single-transaction Deal conversion.
+- **Companies, Contacts & Accounts**: Unified directory with Account 360 view and dynamic custom fields engine.
+- **Visual Sales Pipelines**: Interactive Kanban boards, weighted stage probabilities, and deal forecasting.
+- **Activities & Productivity**: Polymorphic tasks, call logs, meeting notes, overdue reminders, and file attachments.
 
 ---
 
