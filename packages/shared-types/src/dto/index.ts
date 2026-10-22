@@ -93,6 +93,74 @@ export interface ConvertLeadDto {
   expectedCloseDate?: string;
 }
 
+export interface CheckDuplicateDto {
+  email?: string;
+  phone?: string;
+  companyName?: string;
+  excludeLeadId?: string;
+}
+
+export interface DuplicateMatch {
+  leadId: string;
+  firstName: string;
+  lastName: string;
+  email?: string | null;
+  phone?: string | null;
+  companyName?: string | null;
+  status: LeadStatus;
+  matchType: 'EMAIL_EXACT' | 'PHONE_EXACT' | 'COMPANY_NAME' | 'FUZZY';
+  confidenceScore: number;
+}
+
+export interface DuplicateCheckResult {
+  hasDuplicate: boolean;
+  matches: DuplicateMatch[];
+}
+
+export interface ImportLeadsOptions {
+  onDuplicate: 'SKIP' | 'UPDATE' | 'IMPORT_ANYWAY';
+  defaultSource?: LeadSource;
+  defaultStatus?: LeadStatus;
+  defaultPriority?: LeadPriority;
+}
+
+export interface ImportLeadsResult {
+  totalRows: number;
+  imported: number;
+  updated: number;
+  skippedDuplicates: number;
+  failed: number;
+  errors: { row: number; reason: string; data?: Record<string, unknown> }[];
+}
+
+export interface LeadStatsDto {
+  totalLeads: number;
+  newLeads: number;
+  contactedLeads: number;
+  qualifiedLeads: number;
+  unqualifiedLeads: number;
+  convertedLeads: number;
+  lostLeads: number;
+  conversionRate: number;
+  totalEstimatedValue: number;
+}
+
+export interface LeadTimelineItem {
+  id: string;
+  type: 'STATUS_CHANGE' | 'ACTIVITY' | 'CONVERSION' | 'CREATION';
+  title: string;
+  description?: string | null;
+  oldStatus?: LeadStatus;
+  newStatus?: LeadStatus;
+  performedBy?: {
+    id: string;
+    name: string;
+    email: string;
+  } | null;
+  timestamp: Date | string;
+  metadata?: Record<string, unknown>;
+}
+
 // Deal DTOs
 export interface CreateDealDto {
   title: string;
