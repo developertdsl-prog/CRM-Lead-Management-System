@@ -5,7 +5,11 @@ import { PrismaModule } from './modules/prisma/prisma.module';
 import { HealthModule } from './modules/health/health.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { LeadsModule } from './modules/leads/leads.module';
-import { CustomFieldsModule } from './modules/custom-fields/custom-fields.module';
+<<<<<<< HEAD
+import { ContactsModule } from './modules/contacts/contacts.module';
+=======
+import { CompaniesModule } from './modules/companies/companies.module';
+>>>>>>> dev
 
 @Module({
   imports: [
@@ -23,7 +27,6 @@ import { CustomFieldsModule } from './modules/custom-fields/custom-fields.module
     HealthModule,
     AuthModule,
     LeadsModule,
-    CustomFieldsModule,
   ],
 })
 export class AppModule {}
