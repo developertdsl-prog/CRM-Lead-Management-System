@@ -211,3 +211,25 @@ export interface DashboardMetricsDto {
   leadsBySource: { source: string; count: number }[];
   leadsByStatus: { status: string; count: number }[];
 }
+
+// Contact DTOs
+export interface CreateContactDto {
+  companyId?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  mobilePhone?: string;
+  jobTitle?: string;
+  department?: string;
+  isPrimary?: boolean;
+}
+
+export interface UpdateContactDto extends Partial<CreateContactDto> {}
+
+export interface ContactStatsDto {
+  totalContacts: number;
+  primaryContacts: number;
+  contactsWithCompany: number;
+}
+
