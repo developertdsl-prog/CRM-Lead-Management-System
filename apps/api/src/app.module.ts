@@ -7,6 +7,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { LeadsModule } from './modules/leads/leads.module';
 import { CompaniesModule } from './modules/companies/companies.module';
 import { ContactsModule } from './modules/contacts/contacts.module';
+import { CustomFieldsModule } from './modules/custom-fields/custom-fields.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ContactsModule } from './modules/contacts/contacts.module';
     LeadsModule,
     CompaniesModule,
     ContactsModule,
+    CustomFieldsModule,
   ],
 })
 export class AppModule {}

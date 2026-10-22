@@ -31,6 +31,7 @@ import { useAuth } from '@/context/auth-context';
 import { apiRequest } from '@/lib/api-client';
 import { toast } from 'sonner';
 import { Account360Dto, CompanyStatsDto, PaginatedResult } from '@crm/shared-types';
+import { CustomFieldsSection } from '@/components/custom-fields-section';
 
 export default function CompaniesPage() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -976,6 +977,15 @@ export default function CompaniesPage() {
                           ))}
                         </div>
                       )}
+                    </div>
+
+                    {/* Dynamic Custom Fields Section */}
+                    <div>
+                      <CustomFieldsSection
+                        entityType="COMPANY"
+                        entityId={account360Data.company.id}
+                        title="Company Custom Attributes"
+                      />
                     </div>
                   </div>
                 </>

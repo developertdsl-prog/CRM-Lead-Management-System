@@ -12,6 +12,7 @@ import {
 } from '../enums/index.js';
 import { IUser, IOrganization, ILead, IDeal, ICompany, IContact, IAccount } from '../models/index.js';
 
+
 export interface ApiResponse<T = unknown> {
   success: boolean;
   statusCode: number;
@@ -347,4 +348,32 @@ export interface ContactStatsDto {
   primaryContacts: number;
   contactsWithCompany: number;
 }
+
+// Custom Fields DTOs
+export interface CreateCustomFieldDefinitionDto {
+  entityType: EntityType;
+  fieldName: string;
+  fieldLabel: string;
+  fieldType: CustomFieldType;
+  isRequired?: boolean;
+  options?: string[];
+  defaultValue?: string;
+}
+
+export interface UpdateCustomFieldDefinitionDto extends Partial<CreateCustomFieldDefinitionDto> {}
+
+export interface CustomFieldValueDto {
+  definitionId: string;
+  fieldName: string;
+  fieldLabel: string;
+  fieldType: CustomFieldType;
+  isRequired: boolean;
+  options?: string[];
+  value: unknown;
+}
+
+export interface BatchSetCustomFieldsDto {
+  fields: Record<string, unknown>;
+}
+
 
