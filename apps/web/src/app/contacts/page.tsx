@@ -33,6 +33,7 @@ import { useAuth } from '@/context/auth-context';
 import { apiRequest } from '@/lib/api-client';
 import { toast } from 'sonner';
 import { ContactStatsDto, PaginatedResult } from '@crm/shared-types';
+import { CustomFieldsSection } from '@/components/custom-fields-section';
 
 export default function ContactsPage() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -55,7 +56,7 @@ export default function ContactsPage() {
   const [showDetailsDrawer, setShowDetailsDrawer] = useState(false);
   const [selectedContact, setSelectedContact] = useState<any | null>(null);
   const [loadingContact, setLoadingContact] = useState(false);
-  const [activeDrawerTab, setActiveDrawerTab] = useState<'overview' | 'deals' | 'activities'>('overview');
+  const [activeDrawerTab, setActiveDrawerTab] = useState<'overview' | 'customFields' | 'deals' | 'activities'>('overview');
 
   // Form State
   const [formData, setFormData] = useState({
@@ -1010,6 +1011,17 @@ export default function ContactsPage() {
                     Overview
                   </button>
                   <button
+                    onClick={() => setActiveDrawerTab('customFields')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1 ${
+                      activeDrawerTab === 'customFields'
+                        ? 'bg-indigo-600 text-white'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-900'
+                    }`}
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Custom Fields
+                  </button>
+                  <button
                     onClick={() => setActiveDrawerTab('deals')}
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1 ${
                       activeDrawerTab === 'deals'
@@ -1116,7 +1128,16 @@ export default function ContactsPage() {
                   </div>
                 )}
 
-                {/* TAB 2: DEALS */}
+                {/* TAB 2: CUSTOM FIELDS */}
+                {activeDrawerTab === 'customFields' && (
+                  <CustomFieldsSection
+                    entityType="CONTACT"
+                    entityId={selectedContact.id}
+                    title="Contact Custom Attributes"
+                  />
+                )}
+
+                {/* TAB 3: DEALS */}
                 {activeDrawerTab === 'deals' && (
                   <div className="space-y-3">
                     {selectedContact.deals?.length === 0 ? (

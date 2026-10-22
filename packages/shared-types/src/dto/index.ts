@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { UserRole, LeadStatus, LeadPriority, LeadSource, DealStatus, ActivityType, ActivityStatus, ActivityPriority, EntityType, CustomFieldType } from '../enums/index.js';
-import { IUser, IOrganization, ILead, IDeal } from '../models/index.js';
-=======
 import {
   UserRole,
   LeadStatus,
@@ -15,7 +11,7 @@ import {
   EntityType,
 } from '../enums/index.js';
 import { IUser, IOrganization, ILead, IDeal, ICompany, IContact, IAccount } from '../models/index.js';
->>>>>>> dev
+
 
 export interface ApiResponse<T = unknown> {
   success: boolean;
@@ -228,6 +224,131 @@ export interface DashboardMetricsDto {
   leadsByStatus: { status: string; count: number }[];
 }
 
+// Company & Account DTOs
+export interface CreateCompanyDto {
+  name: string;
+  domain?: string;
+  industry?: string;
+  size?: string;
+  annualRevenue?: number;
+  phone?: string;
+  website?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  postalCode?: string;
+  ownerId?: string;
+}
+
+export interface UpdateCompanyDto extends Partial<CreateCompanyDto> {}
+
+export interface CreateAccountDto {
+  companyId: string;
+  customerStatus?: string;
+  tier?: string;
+  accountManagerId?: string;
+  healthScore?: number;
+  mrr?: number;
+  contractStartDate?: string;
+  contractEndDate?: string;
+}
+
+export interface UpdateAccountDto extends Partial<CreateAccountDto> {}
+
+export interface Account360Dto {
+  company: {
+    id: string;
+    name: string;
+    domain?: string | null;
+    industry?: string | null;
+    size?: string | null;
+    annualRevenue?: number | null;
+    phone?: string | null;
+    website?: string | null;
+    address?: string | null;
+    city?: string | null;
+    state?: string | null;
+    country?: string | null;
+    postalCode?: string | null;
+    createdAt: Date | string;
+    owner?: { id: string; firstName: string; lastName: string; email: string } | null;
+  };
+  account: {
+    id: string;
+    customerStatus: string;
+    tier: string;
+    healthScore: number;
+    mrr: number;
+    contractStartDate?: Date | string | null;
+    contractEndDate?: Date | string | null;
+    accountManager?: { id: string; firstName: string; lastName: string; email: string } | null;
+  } | null;
+  contacts: Array<{
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone?: string | null;
+    jobTitle?: string | null;
+    department?: string | null;
+    isPrimary: boolean;
+  }>;
+  deals: {
+    totalValue: number;
+    count: number;
+    items: Array<{
+      id: string;
+      title: string;
+      amount: number;
+      currency: string;
+      status: DealStatus;
+      stage: { id: string; name: string; color?: string | null };
+      expectedCloseDate?: Date | string | null;
+    }>;
+  };
+  activities: Array<{
+    id: string;
+    type: ActivityType;
+    title: string;
+    description?: string | null;
+    status: ActivityStatus;
+    dueAt?: Date | string | null;
+    createdAt: Date | string;
+    assignedTo?: { id: string; firstName: string; lastName: string } | null;
+  }>;
+  customFields?: Record<string, unknown>;
+}
+
+export interface CompanyStatsDto {
+  totalCompanies: number;
+  totalAccounts: number;
+  activeAccounts: number;
+  avgHealthScore: number;
+  totalMrr: number;
+}
+
+// Contact DTOs
+export interface CreateContactDto {
+  companyId?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  mobilePhone?: string;
+  jobTitle?: string;
+  department?: string;
+  isPrimary?: boolean;
+}
+
+export interface UpdateContactDto extends Partial<CreateContactDto> {}
+
+export interface ContactStatsDto {
+  totalContacts: number;
+  primaryContacts: number;
+  contactsWithCompany: number;
+}
+
 // Custom Fields DTOs
 export interface CreateCustomFieldDefinitionDto {
   entityType: EntityType;
@@ -254,4 +375,5 @@ export interface CustomFieldValueDto {
 export interface BatchSetCustomFieldsDto {
   fields: Record<string, unknown>;
 }
+
 
