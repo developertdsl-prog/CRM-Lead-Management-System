@@ -10,6 +10,7 @@ import { ContactsModule } from './modules/contacts/contacts.module';
 =======
 import { CompaniesModule } from './modules/companies/companies.module';
 >>>>>>> dev
+import { CustomFieldsModule } from './modules/custom-fields/custom-fields.module';
 
 @Module({
   imports: [
