@@ -16,15 +16,13 @@ import {
 
 export default function HomePage() {
   const phases = [
-    { id: 'Phase 0', name: 'Architecture & Foundation', branch: 'phase-0-foundation', status: 'COMPLETE', active: true },
-    { id: 'Phase 1', name: 'Multi-Tenant Auth & RBAC', branch: 'phase-1-auth-tenancy', status: 'READY TO START', active: false },
-    { id: 'Phase 2', name: 'Lead Pipeline & Deduplication', branch: 'phase-2-lead-management', status: 'PLANNED', active: false },
-    { id: 'Phase 3', name: 'Contacts, Companies & Custom Fields', branch: 'phase-3-contacts-companies', status: 'PLANNED', active: false },
-    { id: 'Phase 4', name: 'Sales Pipelines & Kanban Deals', branch: 'phase-4-pipelines-deals', status: 'PLANNED', active: false },
-    { id: 'Phase 5', name: 'Activities, Tasks & Productivity', branch: 'phase-5-activities-productivity', status: 'PLANNED', active: false },
-    { id: 'Phase 6', name: 'Automation Workflows & BullMQ', branch: 'phase-6-automation-notifications', status: 'PLANNED', active: false },
-    { id: 'Phase 7', name: 'Reports, Funnels & Analytics', branch: 'phase-7-reports-analytics', status: 'PLANNED', active: false },
-    { id: 'Phase 8', name: 'Production Hardening & E2E', branch: 'phase-8-devops-e2e-hardening', status: 'PLANNED', active: false },
+    { id: 'Phase 0', name: 'Architecture & Foundation', branch: 'feature/foundation-and-architecture', status: 'COMPLETE', active: false },
+    { id: 'Phase 1', name: 'Multi-Tenant Auth & RBAC', branch: '5-multi-tenant-authentication-jwt-rotation-rbac', status: 'COMPLETE', active: false },
+    { id: 'Phase 2', name: 'Lead Pipeline, Deduplication & CSV', branch: '8-lead-lifecycle-deduplication-engine-csv-importexport', status: 'COMPLETED & READY', active: true },
+    { id: 'Phase 3', name: 'Contacts, Companies & Custom Fields', branch: 'feature/contacts-companies-accounts', status: 'PLANNED', active: false },
+    { id: 'Phase 4', name: 'Sales Pipelines & Kanban Deals', branch: 'feature/sales-pipeline-kanban-deals', status: 'PLANNED', active: false },
+    { id: 'Phase 5', name: 'Activities, Tasks & Productivity', branch: 'feature/activities-tasks-productivity', status: 'PLANNED', active: false },
+    { id: 'Phase 6', name: 'Automation Workflows & BullMQ', branch: 'feature/automations-reports-analytics', status: 'PLANNED', active: false },
   ];
 
   return (
@@ -48,16 +46,24 @@ export default function HomePage() {
                 CRM & Lead Management
               </span>
               <span className="text-xs font-mono text-indigo-400">
-                Phase 0 Foundation • Monorepo Architecture
+                Phase 2 • Lead Lifecycle, Deduplication & CSV Engine
               </span>
             </div>
           </div>
 
           <div className="flex items-center space-x-4">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-2" />
-              Environment Ready
-            </span>
+            <Link
+              href="/leads"
+              className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition-colors"
+            >
+              Open Leads App
+            </Link>
+            <Link
+              href="/dashboard"
+              className="text-xs text-slate-300 hover:text-white transition-colors"
+            >
+              Dashboard
+            </Link>
             <a
               href="http://localhost:4000/api/docs"
               target="_blank"
@@ -73,7 +79,7 @@ export default function HomePage() {
         <section className="mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono bg-slate-900 border border-slate-800 text-indigo-300 mb-6">
             <GitBranch className="w-3.5 h-3.5 text-indigo-400" />
-            Active Branch: <span className="text-white font-semibold">phase-0-foundation</span>
+            Active Branch: <span className="text-white font-semibold">8-lead-lifecycle-deduplication-engine-csv-importexport</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight">
