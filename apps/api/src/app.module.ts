@@ -5,7 +5,11 @@ import { PrismaModule } from './modules/prisma/prisma.module';
 import { HealthModule } from './modules/health/health.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { LeadsModule } from './modules/leads/leads.module';
+<<<<<<< HEAD
 import { ContactsModule } from './modules/contacts/contacts.module';
+=======
+import { CompaniesModule } from './modules/companies/companies.module';
+>>>>>>> dev
 
 @Module({
   imports: [
@@ -23,7 +27,11 @@ import { ContactsModule } from './modules/contacts/contacts.module';
     HealthModule,
     AuthModule,
     LeadsModule,
+<<<<<<< HEAD
     ContactsModule,
+=======
+    CompaniesModule,
+>>>>>>> dev
   ],
 })
 export class AppModule {}

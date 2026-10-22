@@ -105,6 +105,21 @@ export interface IContact {
   updatedAt: Date | string;
 }
 
+export interface IAccount {
+  id: string;
+  organizationId: string;
+  companyId: string;
+  customerStatus: string;
+  tier: string;
+  accountManagerId?: string | null;
+  healthScore: number;
+  mrr: number;
+  contractStartDate?: Date | string | null;
+  contractEndDate?: Date | string | null;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+}
+
 export interface IPipeline {
   id: string;
   organizationId: string;

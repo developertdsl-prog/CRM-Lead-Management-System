@@ -1,5 +1,16 @@
-import { UserRole, LeadStatus, LeadPriority, LeadSource, DealStatus, ActivityType, ActivityStatus, ActivityPriority } from '../enums/index.js';
-import { IUser, IOrganization, ILead, IDeal } from '../models/index.js';
+import {
+  UserRole,
+  LeadStatus,
+  LeadPriority,
+  LeadSource,
+  DealStatus,
+  ActivityType,
+  ActivityStatus,
+  ActivityPriority,
+  CustomFieldType,
+  EntityType,
+} from '../enums/index.js';
+import { IUser, IOrganization, ILead, IDeal, ICompany, IContact, IAccount } from '../models/index.js';
 
 export interface ApiResponse<T = unknown> {
   success: boolean;
