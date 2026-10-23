@@ -10,7 +10,7 @@ import {
   CustomFieldType,
   EntityType,
 } from '../enums/index.js';
-import { IUser, IOrganization, ILead, IDeal, ICompany, IContact, IAccount } from '../models/index.js';
+import { IUser, IOrganization, ILead, IDeal, ICompany, IContact, IAccount, IPipeline, IStage } from '../models/index.js';
 
 
 export interface ApiResponse<T = unknown> {
@@ -173,6 +173,37 @@ export interface LeadTimelineItem {
   metadata?: Record<string, unknown>;
 }
 
+// Pipeline & Stage DTOs
+export interface CreateStageDto {
+  name: string;
+  order?: number;
+  winProbability?: number;
+  color?: string;
+}
+
+export interface UpdateStageDto extends Partial<CreateStageDto> {}
+
+export interface ReorderStagesDto {
+  stageOrders: Array<{ id: string; order: number }>;
+}
+
+export interface CreatePipelineDto {
+  name: string;
+  isDefault?: boolean;
+  stages?: CreateStageDto[];
+}
+
+export interface UpdatePipelineDto {
+  name?: string;
+  isDefault?: boolean;
+}
+
+export interface PipelineSummaryDto extends IPipeline {
+  dealCount: number;
+  totalDealValue: number;
+  stages: Array<IStage & { dealCount: number; totalDealValue: number }>;
+}
+
 // Deal DTOs
 export interface CreateDealDto {
   title: string;
@@ -185,11 +216,53 @@ export interface CreateDealDto {
   leadId?: string;
   ownerId?: string;
   expectedCloseDate?: string;
+  customFields?: Record<string, unknown>;
 }
 
 export interface UpdateDealDto extends Partial<CreateDealDto> {
   status?: DealStatus;
   lostReason?: string;
+}
+
+export interface ChangeDealStageDto {
+  stageId: string;
+  status?: DealStatus;
+  lostReason?: string;
+}
+
+export interface DealQueryDto extends PaginationParams {
+  pipelineId?: string;
+  stageId?: string;
+  status?: DealStatus;
+  ownerId?: string;
+  companyId?: string;
+  contactId?: string;
+  search?: string;
+}
+
+export interface DealForecastStageBreakdown {
+  id: string;
+  name: string;
+  order: number;
+  winProbability: number;
+  color: string;
+  dealCount: number;
+  totalAmount: number;
+  weightedAmount: number;
+}
+
+export interface PipelineForecastSummaryDto {
+  totalDeals: number;
+  totalPipelineValue: number;
+  weightedForecastValue: number;
+  wonDealsCount: number;
+  wonDealsValue: number;
+  lostDealsCount: number;
+  lostDealsValue: number;
+  openDealsCount: number;
+  winRate: number;
+  averageDealSize: number;
+  stageBreakdown: DealForecastStageBreakdown[];
 }
 
 // Activity DTOs

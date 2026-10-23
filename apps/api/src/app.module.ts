@@ -8,6 +8,8 @@ import { LeadsModule } from './modules/leads/leads.module';
 import { CompaniesModule } from './modules/companies/companies.module';
 import { ContactsModule } from './modules/contacts/contacts.module';
 import { CustomFieldsModule } from './modules/custom-fields/custom-fields.module';
+import { PipelinesModule } from './modules/pipelines/pipelines.module';
+import { DealsModule } from './modules/deals/deals.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { CustomFieldsModule } from './modules/custom-fields/custom-fields.module
     CompaniesModule,
     ContactsModule,
     CustomFieldsModule,
+    PipelinesModule,
+    DealsModule,
   ],
 })
 export class AppModule {}
