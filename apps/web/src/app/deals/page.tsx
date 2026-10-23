@@ -30,6 +30,7 @@ import {
 } from 'lucide-react';
 import { Navbar } from '@/components/navbar';
 import { CustomFieldsSection } from '@/components/custom-fields-section';
+import { ActivityTimeline } from '@/components/activity-timeline';
 import { useAuth } from '@/context/auth-context';
 import { apiRequest } from '@/lib/api-client';
 import { toast } from 'sonner';
@@ -1112,6 +1113,15 @@ export default function DealsPage() {
                     entityType="DEAL"
                     entityId={selectedDeal.id}
                     title="Deal Custom Fields"
+                  />
+                </div>
+
+                {/* Embedded Activity Timeline */}
+                <div className="pt-2 border-t border-slate-800">
+                  <ActivityTimeline
+                    entityType="deal"
+                    entityId={selectedDeal.id}
+                    entityTitle={selectedDeal.title}
                   />
                 </div>
               </div>
