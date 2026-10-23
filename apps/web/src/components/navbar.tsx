@@ -14,6 +14,7 @@ import {
   Building2,
   Shield,
   ChevronDown,
+  Sparkles,
 } from 'lucide-react';
 import { useAuth } from '@/context/auth-context';
 
@@ -27,7 +28,8 @@ export function Navbar() {
     { name: 'Companies', href: '/companies', icon: Building2, badge: 'Phase 3' },
     { name: 'Contacts', href: '/contacts', icon: Users, badge: 'Phase 3' },
     { name: 'Pipelines & Deals', href: '/deals', icon: Kanban, badge: 'Phase 4' },
-    { name: 'Activities', href: '#', icon: CheckSquare, disabled: true },
+    { name: 'Activities', href: '/tasks', icon: CheckSquare, badge: 'Phase 5' },
+    { name: 'Automations', href: '#', icon: Sparkles, badge: 'Phase 6', disabled: true },
   ];
 
   return (
