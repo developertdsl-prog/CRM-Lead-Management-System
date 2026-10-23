@@ -29,6 +29,7 @@ import {
   Percent,
 } from 'lucide-react';
 import { Navbar } from '@/components/navbar';
+import { CustomFieldsSection } from '@/components/custom-fields-section';
 import { useAuth } from '@/context/auth-context';
 import { apiRequest } from '@/lib/api-client';
 import { toast } from 'sonner';
@@ -1103,6 +1104,15 @@ export default function DealsPage() {
                       <span>Mark as Lost</span>
                     </button>
                   </div>
+                </div>
+
+                {/* Dynamic Polymorphic Custom Fields */}
+                <div className="pt-2 border-t border-slate-800">
+                  <CustomFieldsSection
+                    entityType="DEAL"
+                    entityId={selectedDeal.id}
+                    title="Deal Custom Fields"
+                  />
                 </div>
               </div>
 
