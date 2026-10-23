@@ -23,7 +23,8 @@
 | **Phase 3.1** | `12-contacts-companies-directory-account-360-view-custom-fields-engine` | Companies Directory, KPI cards, Account 360 View Aggregation & MRR/Health Score intelligence. | **MERGED INTO DEV (PR #15) ✅** |
 | **Phase 3.2** | `13-feature-contacts-directory-primary-liaison-management-cross-entity-intelligence` | Contacts Directory, Primary Contact designation logic, Direct mailto/tel actions, and Contact intelligence drawer. | **MERGED INTO DEV (PR #16) ✅** |
 | **Phase 3.3** | `14-feature-dynamic-custom-fields-engine-polymorphic-metadata-ui` | Dynamic Custom Fields Engine (`TEXT`, `NUMBER`, `BOOLEAN`, `DATE`, `SELECT`, `MULTI_SELECT`), values validation, and UI integration. | **MERGED INTO DEV (PR #17) ✅** |
-| **Phase 4 (NEXT)** | `feature/sales-pipeline-kanban-deals` | Sales pipelines, Interactive Drag-and-Drop Kanban Deal board, Stage validation, Weighted revenue forecasting. | READY TO START |
+| **Phase 4.1** | `18-sales-pipelines-stages-management-deals-engine-api-with-weighted-revenue-forecasting` | Multi-Tenant Pipelines & Stages CRUD, Deals Engine API, Stage Transitions, Weighted Revenue Forecasting & Custom Fields. | **IMPLEMENTED & PUSHED (PR Pending) 🚀** |
+| **Phase 4.2 (NEXT)** | `feature/sales-pipeline-kanban-board-ui` | Interactive Drag-and-Drop Kanban Deal Board UI, Deal Creation Drawer, Stage Transitions & Forecasting Dashboard. | READY FOR NEXT STEP |
 | **Phase 5** | `feature/activities-tasks-productivity` | Polymorphic Activities (Tasks, Calls, Meetings, Notes), Overdue alerts, Calendar & List views, S3 attachments. | Planned |
 | **Phase 6** | `feature/automations-reports-analytics` | BullMQ background automations, In-app notification center, Real SQL dashboard analytics, Reports export, Production hardening. | Planned |
 
