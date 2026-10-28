@@ -11,6 +11,9 @@ import { CustomFieldsModule } from './modules/custom-fields/custom-fields.module
 import { PipelinesModule } from './modules/pipelines/pipelines.module';
 import { DealsModule } from './modules/deals/deals.module';
 import { ActivitiesModule } from './modules/activities/activities.module';
+import { NotificationsModule } from './modules/notifications/notifications.module';
+import { AutomationsModule } from './modules/automations/automations.module';
+import { AnalyticsModule } from './modules/analytics/analytics.module';
 
 @Module({
   imports: [
@@ -34,6 +37,9 @@ import { ActivitiesModule } from './modules/activities/activities.module';
     PipelinesModule,
     DealsModule,
     ActivitiesModule,
+    NotificationsModule,
+    AutomationsModule,
+    AnalyticsModule,
   ],
 })
 export class AppModule {}

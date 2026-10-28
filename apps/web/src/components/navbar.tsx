@@ -17,6 +17,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useAuth } from '@/context/auth-context';
+import { NotificationCenter } from '@/components/notification-center';
 
 export function Navbar() {
   const pathname = usePathname();
@@ -29,7 +30,7 @@ export function Navbar() {
     { name: 'Contacts', href: '/contacts', icon: Users, badge: 'Phase 3' },
     { name: 'Pipelines & Deals', href: '/deals', icon: Kanban, badge: 'Phase 4' },
     { name: 'Activities', href: '/tasks', icon: CheckSquare, badge: 'Phase 5' },
-    { name: 'Automations', href: '#', icon: Sparkles, badge: 'Phase 6', disabled: true },
+    { name: 'Automations', href: '/automations', icon: Sparkles, badge: 'Phase 6' },
   ];
 
   return (
@@ -56,19 +57,6 @@ export function Navbar() {
               {navLinks.map((item) => {
                 const Icon = item.icon;
                 const isActive = pathname === item.href;
-
-                if (item.disabled) {
-                  return (
-                    <span
-                      key={item.name}
-                      className="flex items-center space-x-2 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-500 cursor-not-allowed opacity-60"
-                      title="Available in upcoming phase"
-                    >
-                      <Icon className="w-4 h-4" />
-                      <span>{item.name}</span>
-                    </span>
-                  );
-                }
 
                 return (
                   <Link
@@ -101,6 +89,9 @@ export function Navbar() {
                 <span className="font-medium text-white">{organization.name}</span>
               </div>
             )}
+
+            {/* In-App Notification Center */}
+            <NotificationCenter />
 
             {user ? (
               <div className="flex items-center space-x-3">
