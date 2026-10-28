@@ -449,4 +449,110 @@ export interface BatchSetCustomFieldsDto {
   fields: Record<string, unknown>;
 }
 
+// Notification DTOs (Phase 6)
+export interface NotificationDto {
+  id: string;
+  organizationId: string;
+  userId: string;
+  title: string;
+  message: string;
+  type: string;
+  link?: string | null;
+  isRead: boolean;
+  createdAt: Date | string;
+}
+
+export interface NotificationSummaryDto {
+  unreadCount: number;
+  items: NotificationDto[];
+}
+
+export interface CreateNotificationDto {
+  userId?: string;
+  title: string;
+  message: string;
+  type?: string;
+  link?: string;
+}
+
+// Automation DTOs (Phase 6)
+export interface AutomationRuleDto {
+  id: string;
+  organizationId: string;
+  name: string;
+  description?: string | null;
+  triggerEvent: string;
+  conditions: Record<string, unknown>;
+  actions: Array<{ type: string; params?: Record<string, unknown> }>;
+  isActive: boolean;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  _count?: {
+    executions: number;
+  };
+}
+
+export interface CreateAutomationRuleDto {
+  name: string;
+  description?: string;
+  triggerEvent: string;
+  conditions?: Record<string, unknown>;
+  actions: Array<{ type: string; params?: Record<string, unknown> }>;
+  isActive?: boolean;
+}
+
+export interface UpdateAutomationRuleDto extends Partial<CreateAutomationRuleDto> {}
+
+export interface AutomationExecutionDto {
+  id: string;
+  ruleId: string;
+  ruleName?: string;
+  entityType: string;
+  entityId: string;
+  status: 'SUCCESS' | 'FAILED' | 'SKIPPED';
+  error?: string | null;
+  executionLog?: Record<string, unknown> | null;
+  executedAt: Date | string;
+}
+
+// Analytics & Reports DTOs (Phase 6)
+export interface AnalyticsOverviewDto {
+  summary: {
+    totalRevenue: number;
+    weightedRevenue: number;
+    totalDeals: number;
+    wonDealsCount: number;
+    winRate: number;
+    activeLeadsCount: number;
+    leadsConversionRate: number;
+    completedActivitiesCount: number;
+    overdueActivitiesCount: number;
+  };
+  leadsByStatus: Array<{ status: string; count: number; percentage: number }>;
+  leadsBySource: Array<{ source: string; count: number }>;
+  dealsByStage: Array<{
+    stageId: string;
+    stageName: string;
+    winProbability: number;
+    color: string;
+    count: number;
+    value: number;
+  }>;
+  recentActivityFeed: Array<{
+    id: string;
+    type: string;
+    title: string;
+    status: string;
+    dueAt?: Date | string | null;
+    createdAt: Date | string;
+    assignedToName?: string;
+  }>;
+  monthlyRevenueTrends: Array<{
+    month: string;
+    revenue: number;
+    dealCount: number;
+  }>;
+}
+
+
 
